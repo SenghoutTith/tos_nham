@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type='number'] {
+    -moz-appearance: textfield;
+}
+
+.no-arrows {
+    @apply appearance-none;
+}
+
+@keyframes bounce-x {
+    0%,
+    100% {
+        transform: translateX(0);
+        animation-timing-function: ease-out;
+    }
+    50% {
+        transform: translateX(10px);
+        animation-timing-function: ease-in;
+    }
+}
+
+.bounce-x {
+    animation: bounce-x 2s infinite;
+}
+
+@keyframes fade {
+    0% { opacity: 1; }
+    33% { opacity: 0; }
+    66% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  
+  .fade-ellipsis span {
+    animation-name: fade;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+  
+  .fade-ellipsis span:nth-child(2) {
+    animation-delay: 0.33s;
+  }
+  
+  .fade-ellipsis span:nth-child(3) {
+    animation-delay: 0.66s;
+  }
+
+  .status-select.pending {
+    background-color: yellow;
+    color: rgba(128, 128, 128, 0.9);
+  }
+  
+  .status-select.success {
+    background-color: rgb(79, 218, 79);
+    color: white;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  }
+  
+  .status-select.cancel {
+    background-color: red;
+    color: white;
+  }
+  
+  .status-select.accept {
+    background-color: lightgreen;
+  }
+
+  .text-shadow{
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5)
+  }
+
+  .text-shadow-white{
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5)
+  }
+
+  .text-shadow-black{
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.5)
+  }
