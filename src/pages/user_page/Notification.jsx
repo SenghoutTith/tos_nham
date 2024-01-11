@@ -7,26 +7,26 @@ const Notification = () => {
 
     const { data } = useGetProfileQuery({}, { refetchOnMountOrArgChange: true })
 
+    console.log(data?.history);
+
   return (
     <>
-       <div className={`px-2 py-20 md:py-20 md:px-20 ${data?.history.length >= 1 ? 'h-full' : 'h-screen'}`}>
+       <div className={`px-2 py-20 md:py-20 md:px-20 ${data?.history.length >= 3 ? 'h-full' : 'h-screen'}`}>
             <h1 className='text-2xl font-bold py-5 text-black'>Notification</h1>
-              {data?.history.length > 1 ? <div className="flex flex-col gap-5">
-                {data?.history.slice().reverse().map(({ data: { product = [], brand, status, totalAmount, totalPrice, createdAt }, index }) => (
-                  <div className={`bg-gray-400 overflow-hidden rounded-md `} w-full h-full key={index}>
+              {data?.history.length >= 1 ? 
+              <div className="flex flex-col gap-5">
+                {data?.history.slice().reverse().map(({ data: { product = [], brand, status, totalAmount, totalPrice, createdAt }}, index) => (
+                  <div className={`bg-gray-400 overflow-hidden rounded-md w-full h-full`}  key={index}>
                     <div className="flex items-center justify-between w-full bg-gray-300 p-3">
                       <div className="flex items-center gap-3">
                         <MdRestaurantMenu size={30} />
                         <p className='w-full md:text-3xl tracking-wider'>{brand}</p>
                       </div>
-                      <p className={`text-xl 
-                      ${
-                        status === 'pending' ? 'text-yellow-500 animate-pulse' : 
+                      <p className={` text-xl ${status === 'pending' ? 'text-yellow-500 animate-pulse' : 
                         status === 'accept' ? 'text-green-500 animate-pulse' : 
                         status === 'success' ? 'text-green-500' : 
                         status === 'delivery' ? 'text-blue-500 animate-pulse' :
-                        'text-red-500'}`
-                        }>
+                        'text-red-500'}`}>
                         <span className="text-gray-600">Status:</span> {status} 
                         {status === 'success' ? '' : <span className={`${status === 'pending' || 'accpet' || 'delivery' && 'fade-ellipsis'}`}>.<span>.</span><span>.</span></span> }
                         

@@ -81,7 +81,7 @@ const Navbar = () => {
                         <p className='font-bold text-transparent bg-gradient-to-r from-purple-400 to-purple-200 bg-clip-text'>TosNham.</p>
                     </div>
 
-                    <ul className='hidden md:flex items-center justify-evenly h-10 min-w-fit w-[80%] lg:w-2/3 text-gray-300'>
+                    <ul className='hidden md:flex items-center justify-evenly h-10 min-w-fit w-[80%] md:2/3 lg:w-[70%] text-gray-300'>
                         {navs.map(({id, title, href}) => (
                             <Link
                             to={href}
