@@ -4,6 +4,8 @@ const server_url = import.meta.env.VITE_SERVER_URL
 
 const user_url = `${server_url}/api/user`
 
+const payment_url = `${server_url}/api/payment`
+
 export const userApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getAllUsers: builder.query({
@@ -141,6 +143,44 @@ export const userApiSlice = apiSlice.injectEndpoints({
             invalidatesTags: ['User']
         }),
 
+        //get all payments
+        getAllPayments: builder.query({
+            query: () => ({
+                url: `${payment_url}`,
+                method: "GET",
+            }),
+            providesTags: ['Payment']
+        }),
+
+        //super admin update user's role
+        updateRole: builder.mutation({
+            query: (data) => ({
+                url: `${user_url}/update-user-role`,
+                method: "PATCH",
+                body: data
+            }),
+            invalidatesTags: ['User']
+        }),
+
+        //super admin update deliveryman's status
+        updateDeliveryManStatus: builder.mutation({
+            query: (data) => ({
+                url: `${user_url}/update-deliveryman-working-status`,
+                method: "POST",
+                body: data
+            }),
+            invalidatesTags: ['User']
+        }),
+
+        addBrand: builder.mutation({
+            query: (data) => ({
+                url: `${user_url}/add-brand`,
+                method: "POST",
+                body: data
+            }),
+            invalidatesTags: ['User']
+        })
+
     })
 })
 
@@ -161,5 +201,9 @@ export const {
     useUpdatePaymentStatusMutation,
     useTransferPaymentToDeliveryManMutation,
     useUpdatePaymentStatusByDeliveryManMutation,
-    useUpdateDeliveryManWorkingStatusMutation
+    useUpdateDeliveryManWorkingStatusMutation,
+    useGetAllPaymentsQuery,
+    useUpdateRoleMutation,
+    useUpdateDeliveryManStatusMutation,
+    useAddBrandMutation
 } = userApiSlice

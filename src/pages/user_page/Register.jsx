@@ -4,10 +4,8 @@ import React, { useState, useEffect } from 'react'
 import logo from '../../assets/logo.png'
 import { useNavigate, Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { useDispatch, useSelector } from "react-redux";
-import { useRegisterMutation } from "../../redux/features/auth/userApiSlice"
+import { useRegisterMutation } from "../../redux/features/userApiSlice"
 import Loader from '../../components/Loader'
-import { setCredentials } from "../../redux/features/auth/AuthSlice";
 
 const Register = () => {
 
@@ -23,9 +21,8 @@ const Register = () => {
 
     const [see, setSee] = useState(false)
 
-    const dispatch = useDispatch()
     const navigate = useNavigate()
-    const { userInfo } = useSelector((state) => state.auth)
+
     const [registerApiCall, { isLoading }]  = useRegisterMutation()
 
     const registerUser = async (e) => {
@@ -35,9 +32,7 @@ const Register = () => {
             toast.error("Passwords do not match")
           }else{
             const res = await registerApiCall(formData).unwrap()
-            dispatch(setCredentials({...res}))
             toast.success("Registered Successfully")
-            console.log("userInfo", userInfo)
             navigate('/')
           }
         } catch (error) {
@@ -51,12 +46,6 @@ const Register = () => {
 
       setFormData({...formData, [name]: value})
     }
-
-    useEffect(() => {
-      if(userInfo){
-        navigate('/')
-      }
-    },[userInfo, navigate])
 
   return (
     <>

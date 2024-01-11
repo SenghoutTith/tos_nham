@@ -2,20 +2,20 @@ import { BsFillClockFill } from "react-icons/bs";
 import { MdEmail } from "react-icons/md"; 
 import { AiFillPhone } from "react-icons/ai"; 
 import { FaMapMarkerAlt } from "react-icons/fa"; 
-import banner from "../assets/pic2.jpg"
-import facebook from "../assets/facebook.png"
-import instagram from "../assets/instagram.png"
-import tiktok from "../assets/tik-tok.png"
-import twitter from "../assets/twitter.png"
-import youtube from "../assets/youtube.png"
+import banner from "../../assets/banner.png"
+import facebook from "../../assets/facebook.png"
+import instagram from "../../assets/instagram.png"
+import tiktok from "../../assets/tik-tok.png"
+import twitter from "../../assets/twitter.png"
+import youtube from "../../assets/youtube.png"
 import { Link } from "react-router-dom"
 import  { useRef, useState, React } from 'react';
 import emailjs from '@emailjs/browser';
 import { toast } from 'react-toastify';
 
 
-import Footer from "../components/Footer";
-import Loader from "../components/Loader";
+import Footer from "../../components/Footer";
+import Loader from "../../components/Loader";
 
 const Contact = () => {
 

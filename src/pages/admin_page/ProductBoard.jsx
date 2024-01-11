@@ -1,9 +1,9 @@
 import { AiOutlineClose } from "react-icons/ai"; 
 import React, { useState, useEffect } from 'react';
-import { useGetProfileQuery } from '../../../redux/features/auth/userApiSlice'
-import { useCreateProductMutation, useDeleteProductMutation, useUpdateProductMutation } from "../../../redux/features/auth/productApiSlice";
+import { useGetProfileQuery } from '../../redux/features/userApiSlice'
+import { useCreateProductMutation, useDeleteProductMutation, useUpdateProductMutation } from "../../redux/features/productApiSlice";
 import { toast } from "react-toastify";
-import Loader from "../../../components/Loader";
+import Loader from "../../components/Loader";
 
 const ProductBoard = () => {
 

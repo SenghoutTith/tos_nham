@@ -1,7 +1,7 @@
 import { MdRestaurantMenu } from "react-icons/md"; 
 import React from 'react'
-import { useGetProfileQuery } from '../../../redux/features/auth/userApiSlice'
-import { convertToCambodiaTime } from '../../../utils/utils';
+import { useGetProfileQuery } from '../../redux/features/userApiSlice'
+import { convertToCambodiaTime } from '../../utils/utils';
 
 const Notification = () => {
 

@@ -5,10 +5,10 @@ import { MdDeliveryDining } from "react-icons/md";
 import { FaRegHandshake } from "react-icons/fa"; 
 import { RiHandHeartFill } from "react-icons/ri"; 
 import React from 'react'
-import banner from "../assets/banner.png"
-import logo from "../assets/logo.png"
-import pic1 from "../assets/pic1.png"
-import Footer from "../components/Footer";
+import banner from "../../assets/banner.png"
+import logo from "../../assets/logo.png"
+import pic1 from "../../assets/pic1.png"
+import Footer from "../../components/Footer";
 
 
 const About = () => {

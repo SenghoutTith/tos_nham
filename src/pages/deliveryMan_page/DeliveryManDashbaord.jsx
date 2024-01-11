@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { useGetProfileQuery, useUpdateDeliveryManWorkingStatusMutation, useUpdatePaymentStatusByDeliveryManMutation } from '../../../redux/features/auth/userApiSlice'
-import { convertToCambodiaTime } from '../../../utils/utils'
+import { useGetProfileQuery, useUpdateDeliveryManWorkingStatusMutation, useUpdatePaymentStatusByDeliveryManMutation } from '../../redux/features/userApiSlice'
+import { convertToCambodiaTime } from '../../utils/utils'
 import { toast } from 'react-toastify';
-import Loader from '../../../components/Loader';
+import Loader from '../../components/Loader';
 
 const DeliveryManDashbaord = () => {
 

@@ -2,20 +2,17 @@ import { MdDeliveryDining } from "react-icons/md";
 import { AiOutlineSearch } from "react-icons/ai"; 
 import { AiOutlineDoubleLeft, AiOutlineDoubleRight } from "react-icons/ai"; 
 import React, { useEffect, useState } from "react";
-import ShopCard from "../components/ShopCard";
-import Loader from "../components/Loader";
-import { useGetProductQuery } from "../redux/features/auth/productApiSlice";
-import { useAddToCartMutation, useGetAllUsersQuery } from "../redux/features/auth/userApiSlice";
-import { productSlider, categories } from "../data/data";
+import Loader from "../../components/Loader";
+import { useGetProductQuery } from "../../redux/features/productApiSlice";
+import { useAddToCartMutation, useGetAllUsersQuery } from "../../redux/features/userApiSlice";
+import { productSlider, categories } from "../../data/data";
 import { Link } from "react-router-dom";
-import { shortenText } from "../utils/utils";
+import { shortenText } from "../../utils/utils";
 import { toast } from "react-toastify";
-import Carousel from "react-multi-carousel";
-import { responsive } from "../data/carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Link as ScrollLink } from "react-scroll";
-import Card from "../components/Card";
-import Footer from "../components/Footer";
+import Card from "../../components/Card";
+import Footer from "../../components/Footer";
 
 const googleMapPic = "https://img.freepik.com/free-vector/location_53876-25530.jpg?w=1060&t=st=1704300812~exp=1704301412~hmac=41fd687e1edf863b93938a1d1d4ee91631e6e78063daa9e9d0305bf3513cb81b"
 
@@ -125,7 +122,6 @@ const Shop = () => {
 
 
       {/* popular restaurant */}
-      <Carousel responsive={responsive}>
       <div className="p-5 text-black">
           <p className="text-xl md:text-3xl tracking-wider font-extralight p-5">Popular Restaurant:</p>
           <div className="flex gap-5">
@@ -148,7 +144,6 @@ const Shop = () => {
             ))}
           </div>
       </div>
-      </Carousel>
 
       <div className="p-5 text-black">
           <p className="text-3xl tracking-wider font-bold p-5 text-center">Explore Food</p>

@@ -1,10 +1,10 @@
 import { BsTrash } from "react-icons/bs"; 
 import { AiOutlineClose } from "react-icons/ai"; 
 import React, { useEffect, useState } from 'react'
-import { useDecreaseCartAmountMutation, useDeleteCartItemMutation, useGetProfileQuery, useIncreaseCartAmountMutation, usePaymentMutation } from '../../../redux/features/auth/userApiSlice';
-import Loader from '../../../components/Loader';
+import { useDecreaseCartAmountMutation, useDeleteCartItemMutation, useGetProfileQuery, useIncreaseCartAmountMutation, usePaymentMutation } from '../../redux/features/userApiSlice';
+import Loader from '../../components/Loader';
 import { toast } from 'react-toastify';
-import { shortenText } from '../../../utils/utils';
+import { shortenText } from '../../utils/utils';
 
 const Cart = () => {
 

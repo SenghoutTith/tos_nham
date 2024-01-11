@@ -1,9 +1,9 @@
 import { AiOutlineCaretRight } from "react-icons/ai"; 
 import React, { useState } from 'react'
-import { useGetAllUsersQuery, useGetProfileQuery, useTransferPaymentToDeliveryManMutation, useUpdatePaymentStatusMutation } from '../../../redux/features/auth/userApiSlice'
-import Loader from '../../../components/Loader'
+import { useGetAllUsersQuery, useGetProfileQuery, useTransferPaymentToDeliveryManMutation, useUpdatePaymentStatusMutation } from '../../redux/features/userApiSlice'
+import Loader from '../../components/Loader'
 import { toast } from 'react-toastify';
-import { convertToCambodiaTime, shortenText } from '../../../utils/utils';
+import { convertToCambodiaTime, shortenText } from '../../utils/utils';
 
 const Inbox = () => {
 

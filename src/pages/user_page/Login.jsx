@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react'
 import logo from '../../assets/logo.png'
 import { Link, useNavigate } from 'react-router-dom'
-import { setCredentials } from '../../redux/features/auth/AuthSlice'
-import { useDispatch, useSelector } from 'react-redux'
-import { useLoginMutation } from '../../redux/features/auth/userApiSlice'
+import { useLoginMutation } from '../../redux/features/userApiSlice'
 import { toast } from 'react-toastify'
 import Loader from '../../components/Loader'
 
@@ -11,31 +9,23 @@ const Login = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const dispacth = useDispatch()
+
   const navigate = useNavigate()
 
   const [loginApiCall, { isLoading }] = useLoginMutation()
 
-  const { userInfo } = useSelector((state) => state.auth)
 
   const loginUser = async (e) => {
     try {
       e.preventDefault();
       const res = await loginApiCall({email, password}).unwrap()
-      dispacth(setCredentials({...res}))
       toast.success(res.message || 'Login Successfull')
       navigate('/')
     } catch (error) {
       toast.error(error?.data?.message || error.message);
     }
   }
-
-  useEffect(() => {
-    if(userInfo){
-      navigate('/')
-    }
-  }, [userInfo, navigate])
-
+  
   return (
     <>
       {isLoading && <Loader />}

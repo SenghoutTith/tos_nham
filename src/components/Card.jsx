@@ -1,9 +1,9 @@
 import React from 'react'
-import { useGetProductQuery } from '../redux/features/auth/productApiSlice'
+import { useGetProductQuery } from '../redux/features/productApiSlice'
 import { shortenText } from '../utils/utils'
 import { MdDeliveryDining } from "react-icons/md"; 
 import Loader from './Loader';
-import { useAddToCartMutation } from '../redux/features/auth/userApiSlice';
+import { useAddToCartMutation } from '../redux/features/userApiSlice';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 

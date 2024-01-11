@@ -1,5 +1,6 @@
 import React from 'react'
-import { useGetProfileQuery } from '../../../redux/features/auth/userApiSlice'
+import { useGetProfileQuery } from '../../redux/features/userApiSlice'
+import Loader from '../../components/Loader'
 
 const DashBoard = () => {
 
@@ -7,6 +8,7 @@ const DashBoard = () => {
 
   return (
     <>
+        {isLoading && <Loader/>}
         <div className="p-4 sm:ml-64 pt-[5rem] overflow-hidden">
         <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
             <div className="grid grid-cols-4 gap-3 mb-4">
@@ -108,22 +110,3 @@ const DashBoard = () => {
 }
 
 export default DashBoard
-
-{/* <div className="grid grid-cols- gap-4 mb-4">
-              <div className=" p-7 h-24 rounded bg-blue-400 dark:bg-gray-800">
-                  <h1>Total Customers</h1>
-                  <p>1</p>
-              </div>
-              <div className=" p-7 h-24 rounded bg-yellow-400  dark:bg-gray-800">
-                  <h1>Total Admins</h1>
-                  <p>1</p>
-              </div>
-              <div className=" p-7 h-24 rounded bg-violet-400  dark:bg-gray-800" >
-                  <h1>Total Products</h1>
-                  <p>products.length</p>
-              </div>
-              <div className=" p-7 h-24 rounded bg-green-400  dark:bg-gray-800">
-                  <h1>Total Orders</h1>
-                  <p>userOrders.length</p>
-              </div>
-            </div> */}

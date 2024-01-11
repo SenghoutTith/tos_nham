@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { useGetProductByIdQuery } from '../redux/features/auth/productApiSlice'
-import Loader from '../components/Loader'
+import { useGetProductByIdQuery } from '../../redux/features/productApiSlice'
+import Loader from '../../components/Loader'
 
 const SingleProduct = () => {
 

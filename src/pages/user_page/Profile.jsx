@@ -1,28 +1,22 @@
 import { AiOutlineCloudUpload } from "react-icons/ai"; 
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux';
-import Loader from '../../../components/Loader';
+import Loader from '../../components/Loader';
 import { toast } from 'react-toastify';
-import { setCredentials } from "../../../redux/features/auth/AuthSlice";
-import { useUpdateMutation, useUpdatePhotoMutation } from "../../../redux/features/auth/userApiSlice";
+import { useGetProfileQuery, useUpdateMutation, useUpdatePhotoMutation } from "../../redux/features/userApiSlice";
 
 const cloud_name = import.meta.env.VITE_CLOUDINARY_NAME
 const upload_preset = import.meta.env.VITE_UPLOAD_CLOUDINARY_PRESET
 
 const Profile = () => {
 
-    const dispatch = useDispatch()
+    const { data: userInfo, isLoading: userInfoLoading } = useGetProfileQuery({}, { refetchOnMountOrArgChange: true, refetchOnReconnect: true, refetchOnFocus: true })
 
     const [updateLoadig, setUpdateLoading] = useState(false)
 
     const [ updateApiCall, { isLoading } ] = useUpdateMutation()
 
-    const [ updatePhotoApiCall ] = useUpdatePhotoMutation()
-
-    const { userInfo } = useSelector(state => state.auth)
-
-    console.log(userInfo.role);
+    const [ updatePhotoApiCall, { isLoading: updatePhotoLoading } ] = useUpdatePhotoMutation()
 
     const [formData, setFormData] = useState({})
 
@@ -57,7 +51,6 @@ const Profile = () => {
                     photo: imageUrl,
                 };
                 const res = await updatePhotoApiCall(updatedData).unwrap()
-                dispatch(setCredentials({...res}))
                 toast.success("Photo updated successfully")
                 setUpdateLoading(false)
                 setPhotoPreview(null)
@@ -77,7 +70,6 @@ const Profile = () => {
         try {
             e.preventDefault();
             const res = await updateApiCall(formData).unwrap()
-            dispatch(setCredentials({...res}))
             toast.success("Update Successfully")
          } catch (error) {
              toast.error(error?.data?.message || error.message);
@@ -99,7 +91,7 @@ const Profile = () => {
 
   return (
     <>
-    {isLoading && <Loader />}
+    {isLoading || userInfoLoading || updatePhotoLoading && <Loader />}
     <div className='w-full max-h-screen'>
         {/* banner section */}
        <div className='relative w-full h-[300px] bg-gradient-to-r from-purple-950 via-purple-500 to-gray-700' >
