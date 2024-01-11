@@ -132,14 +132,16 @@ const Shop = () => {
               <p className="text-center">Phnom Penh</p>
             </div>
 
-            {allUsers?.map(({ brand, product }, index) => (
+            {allUsers?.filter(({ brand }) => brand !== 'Tos Nham').map(({ brand, product }, index) => (
               <div key={index}>
                 {product.products.length > 0 && (
-                  <div className="md:w-[150px] md:h-[150px] w-[100px] h-[100px]  rounded-full overflow-hidden">
-                    <img className="w-full h-full object-cover hover:scale-110 duration-200 ease-in-out" src={product.products[0].image} alt="logo" />
-                  </div>
+                  <>
+                    <div className="md:w-[150px] md:h-[150px] w-[100px] h-[100px]  rounded-full overflow-hidden">
+                      <img className="w-full h-full object-cover hover:scale-110 duration-200 ease-in-out" src={product.products[0].image} alt="logo" />
+                    </div>
+                    <p className="text-center">{brand}</p>
+                  </>
                 )}
-                <p className="text-center">{brand}</p>
               </div>
             ))}
           </div>
