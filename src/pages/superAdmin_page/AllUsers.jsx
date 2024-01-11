@@ -54,11 +54,13 @@ const AllUsers = () => {
         }
     }
 
+    console.log(data);
+
   return (
     <>
         {isLoading && <Loader/>}
-        <div className='w-[77%] h-full shadow-md sm:rounded-lg mt-[5rem] ml-[17rem] text-black'>
-            <p className='text-3xl font-bold'>Payment:</p>
+        <div className={`w-[77%] ${data.length >= 4 ? "h-full" : "h-screen"}  shadow-md sm:rounded-lg mt-[5rem] ml-[17rem] text-black`}>
+            <p className='text-3xl font-bold'>All User:</p>
             <div className='p-5'>
                 <div className='grid grid-cols-4 w-full text-center'>
                     <p className='bg-white py-5'>Image</p>

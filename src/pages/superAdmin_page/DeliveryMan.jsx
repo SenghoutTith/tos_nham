@@ -38,7 +38,7 @@ const DeliveryMan = () => {
     <>
         {isLoading && <Loader/>}
         <div className={`w-[77%] ${legnth >= 4 ? 'h-full' : 'h-screen'} shadow-md sm:rounded-lg mt-[5rem] ml-[17rem] text-black`}>
-            <p className='text-3xl font-bold'>Payment:</p>
+            <p className='text-3xl font-bold'>Delivery Man:</p>
             <div className='p-5'>
                 <div className='grid grid-cols-4 w-full text-center'>
                     <p className='bg-white py-5'>Image</p>

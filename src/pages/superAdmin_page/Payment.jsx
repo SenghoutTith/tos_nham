@@ -11,7 +11,7 @@ const Payment = () => {
     <>
         {isLoading && <Loader />}
     
-        <div className='w-[77%] h-full shadow-md sm:rounded-lg mt-[5rem] ml-[17rem] text-black'>
+        <div className={`w-[77%] ${data.length >= 4 ? "h-full" : "h-screen"}  shadow-md sm:rounded-lg mt-[5rem] ml-[17rem] text-black`}>
             <p className='text-3xl font-bold'>Payment:</p>
             <div className='flex flex-col gap-7 p-5 justify-center items-center'>
             {data?.slice().reverse().map(({product = [], user = [], paymentOption, _id: orderId, brand, createdAt, status, totalAmount, totalPrice}, index) => (
