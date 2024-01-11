@@ -48,6 +48,7 @@ const AllUsers = () => {
         try {
             const res = await addBrand({_id: newBrand.userId, brand: newBrand.brand}).unwrap()
             refetch()
+            setNewBrand({...newBrand, brand: ''})
             toast.success(res?.message)
         } catch (error) {
             toast.error(error?.message)
@@ -87,7 +88,7 @@ const AllUsers = () => {
                             { role === 'admin' ? 
                             <form onSubmit={handleSubmit}>
                                 <div className='text-white'>
-                                    <input className='px-2 py-1 rounded-md w-full bg-slate-500' type="text" name="brand" value={brand || "add a company name"} onChange={(e) => handleAddBrand(userId, e.target.value)}/>
+                                    <input className='px-2 py-1 rounded-md w-full bg-slate-500 outline-none' type="text" name="brand" value={brand} placeholder='add a company name' onChange={(e) => handleAddBrand(userId, e.target.value)}/>
                                 </div>
                             </form>
                              : role === 'deliveryman' && <div>
