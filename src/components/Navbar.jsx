@@ -183,7 +183,33 @@ const Navbar = () => {
                     </div>
 
                     <div className={`py-4 px-2 flex md:hidden w-1/2 h-screen bg-gradient-to-b from-purple-950 to-gray-950 absolute top-0 duration-500 ease-in z-50 ${click ? 'left-0' : 'left-[-100%]'} `}>
-                            <ul className='flex flex-col md:hidden gap-3 text-sm text-gray-400 w-full'>
+                        <ul className='flex flex-col md:hidden gap-3 text-sm text-gray-400 w-full'>
+                            {userProfile && 
+                            <div className={`dropdown ${isDropdownOpen ? 'open' : ''}`}>
+                                <div 
+                                    tabIndex={0} 
+                                    role="button" 
+                                    className="btn bg-purple-950 text-white shadow-lg border-none"
+                                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                                >
+                                    <div className=" flex items-center gap-2">
+                                        <div className="w-10 h-10 rounded-full overflow-hidden"><img src={userProfile?.photo} alt="img" className="object-cover" /></div>
+                                        <div className="flex flex-col">
+                                            <p>Welcome!</p>
+                                            {shortenText(userProfile?.name, 8)}
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul 
+                                    tabIndex={0} 
+                                    className={`dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 ${isDropdownOpen ? 'block' : 'hidden'}`}
+                                >
+                                    <li> <Link to={'/user/profile'} onClick={() => {setIsDropdownOpen(false), setClick(!click)}}>Profile</Link> </li>
+                                    <li> <Link to={'/notification'} onClick={() => {setIsDropdownOpen(false), setClick(!click)}}>History</Link> </li>
+                                    <li> <Link to={'/user/login'} onClick={() => {logoutHandler(), setIsDropdownOpen(false), setClick(!click)}}>Logout</Link> </li>
+                                </ul>
+                            </div>
+                            }
                             {navs.map(({id, icons, title, href}) => (
                                 <Link to={href} key={id} onClick={() => setClick(!click)}>
                                     <li className='flex items-center gap-2 cursor-pointer duration-100 ease-in hover:font-bold hover:text-white hover:scale-105 hover:bg-black hover:bg-opacity-20 px-2 py-2'>
@@ -213,9 +239,7 @@ const Navbar = () => {
                                 </li>
                                 <hr className="my-1"/>
                             </Link>}
-
-                            </ul>
-                        
+                        </ul>
                     </div>
                 </div>
                 

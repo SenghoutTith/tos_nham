@@ -55,7 +55,6 @@ const ProductBoard = () => {
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
-        console.log(updateProduct._id);
         const res = await updateProductApiCall(updateProduct).unwrap()
         refetch()
         toast.success("Product updated successfully");
@@ -87,12 +86,7 @@ const ProductBoard = () => {
         toast.error(error?.data?.message || error.message);
       }
     }
-
-    useEffect(() => {
-      console.log(formData);
-    }, [formData, updateProduct])
-
-
+    
   return (
     <>
 

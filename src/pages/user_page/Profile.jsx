@@ -102,13 +102,13 @@ const Profile = () => {
         <div className='relative h-[600px] w-full bg-gradient-to-b from-purple-50 to bg-purple-100'>
             <div className='absolute -translate-x-1/2 -translate-y-1/2 top-48 left-1/2 '>
                 <div className='grid grid-cols-3 gap-5 text-white mb-8'>
-                    <Link to="/userInfo/profile" className='hover:scale-105 duration-200 ease-in bg-gray-500/50 drop-shadow-lg shadow-lg px-3 py-2 text-center'>
+                    <Link to="#" className='hover:scale-105 duration-200 ease-in bg-gray-500/50 drop-shadow-lg shadow-lg px-3 py-2 text-center'>
                         Profile
                     </Link>
-                    <Link to="/userInfo/wallet" className='hover:scale-105 duration-200 ease-in bg-gray-500/50 drop-shadow-lg shadow-lg px-3 py-2 text-center'>
+                    <Link to="#" className='hover:scale-105 duration-200 ease-in bg-gray-500/50 drop-shadow-lg shadow-lg px-3 py-2 text-center'>
                         Wallet
                     </Link>
-                    <Link to="/userInfo/wishlist" className='hover:scale-105 duration-200 ease-in bg-gray-500/50 drop-shadow-lg shadow-lg px-3 py-2 text-center'>
+                    <Link to="#" className='hover:scale-105 duration-200 ease-in bg-gray-500/50 drop-shadow-lg shadow-lg px-3 py-2 text-center'>
                         WishList
                     </Link>
                 </div>

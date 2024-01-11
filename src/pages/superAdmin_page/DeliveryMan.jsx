@@ -24,7 +24,6 @@ const DeliveryMan = () => {
 
     const handleUpdateWorkingStatus = async (userId, workingStatus) => {
         try {
-            console.log(userId, workingStatus);
             const res = await updateWorkingStatus({_id: userId, workingStatus: workingStatus}).unwrap()
             refetch()
             toast.success(res?.message)
