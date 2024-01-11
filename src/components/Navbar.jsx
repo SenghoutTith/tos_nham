@@ -81,12 +81,12 @@ const Navbar = () => {
                         <p className='font-bold text-transparent bg-gradient-to-r from-purple-400 to-purple-200 bg-clip-text'>TosNham.</p>
                     </div>
 
-                    <ul className='hidden md:flex items-center justify-evenly h-10 min-w-fit w-2/3 text-gray-300'>
+                    <ul className='hidden md:flex items-center justify-evenly h-10 min-w-fit w-[80%] lg:w-2/3 text-gray-300'>
                         {navs.map(({id, title, href}) => (
                             <Link
                             to={href}
                             key={id}>
-                                <li className={`border-b-transparent border-b-2 cursor-pointer duration-100 ease-in hover:font-bold hover:text-white hover:scale-105 hover:border-b-purple-400`}>
+                                <li className={`text-[14px] lg:text-base border-b-transparent border-b-2 cursor-pointer duration-100 ease-in hover:font-bold hover:text-white hover:scale-105 hover:border-b-purple-400`}>
                                     {title}
                                 </li> 
                             </Link>
@@ -94,7 +94,7 @@ const Navbar = () => {
 
                         {userProfile && userProfile?.role === "admin" ? (
                             <Link to={"/admin/dashboard"}>
-                                <li className='items-center gap-2 flex p-3 bg-green-500 text-white font-bold text-shadow-lg rounded-md animate-pulse hover:animate-none hover:scale-105 duration-200 ease-linear'>
+                                <li className='text-xs lg:text-base items-center gap-2 flex p-2 lg:p-3 bg-green-500 text-white font-bold text-shadow-lg rounded-md animate-pulse hover:animate-none hover:scale-105 duration-200 ease-linear'>
                                     <p>Admin</p>
                                     <GiRoundStar size={20}/>
                                 </li>
@@ -134,7 +134,7 @@ const Navbar = () => {
                                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                                 >
                                     <div className=" flex items-center gap-2">
-                                        <div className="w-10 h-10 rounded-full overflow-hidden"><img src={userProfile?.photo} alt="img" className="object-cover" /></div>
+                                        <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full overflow-hidden"><img src={userProfile?.photo} alt="img" className="object-cover" /></div>
                                         <div className="flex flex-col">
                                             <p>Welcome!</p>
                                             {shortenText(userProfile?.name, 8)}
@@ -172,13 +172,49 @@ const Navbar = () => {
                         </Link>
                     </ul>
 
-                    <div onClick={() => setClick(!click)} className="flex md:hidden text-white cursor-pointer">
+                    <div  className="flex w-[170px] items-center justify-between md:hidden text-white cursor-pointer">
+
+                    {userProfile && userProfile?.role === "admin" ? (
+                            <Link to={"/admin/dashboard"}>
+                                <li className='items-center gap-2 flex p-3 bg-green-500 text-white font-bold text-shadow-lg rounded-md animate-pulse hover:animate-none hover:scale-105 duration-200 ease-linear'>
+                                    <p>Admin</p>
+                                    <GiRoundStar size={20}/>
+                                </li>
+                            </Link>
+                            )
+                            : null
+                        }
+
+                        {userProfile && userProfile?.role === "superadmin" ? (
+                            <Link to={"/superadmin/dashboard"}>
+                                <li className='items-center gap-2 flex p-3 bg-purple-500 text-white font-bold text-shadow-lg rounded-md animate-pulse hover:animate-none hover:scale-105 duration-200 ease-linear'>
+                                    <p>Super Admin</p>
+                                    <GiRoundStar size={20}/>
+                                </li>
+                            </Link>
+                            )
+                            : null
+                        }
+
+                        {userProfile && userProfile?.role === "deliveryman" ? (
+                            <Link to={"/deliveryman/dashboard"}>
+                                <li className='items-center gap-2 flex p-3 bg-amber-500 text-white font-bold text-shadow-lg rounded-md animate-pulse hover:animate-none hover:scale-105 duration-200 ease-linear'>
+                                    <p>Delivery</p>
+                                    <RiUserStarLine size={20}/>
+                                </li>
+                            </Link>
+                            )
+                            : null
+                        }
+                        
                         {click ? 
-                            <div className="flex gap-2">
+                            <div onClick={() => setClick(!click)} className="flex gap-2 w-fit">
                                 <p>Close</p>
                                 <AiOutlineClose size={25}/>
                             </div> 
-                            : <AiOutlineMenu size={25}/>
+                            : <div onClick={() => setClick(!click)} className="w-fit">
+                                <AiOutlineMenu size={25}/>
+                            </div>
                         }
                     </div>
 
