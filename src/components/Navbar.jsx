@@ -189,10 +189,10 @@ const Navbar = () => {
                                 <div 
                                     tabIndex={0} 
                                     role="button" 
-                                    className="btn bg-purple-950 text-white shadow-lg border-none"
+                                    className="btn bg-purple-950 text-white shadow-lg border-none w-full"
                                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                                 >
-                                    <div className=" flex items-center gap-2">
+                                    <div className=" flex items-center justify-start w-full gap-2">
                                         <div className="w-10 h-10 rounded-full overflow-hidden"><img src={userProfile?.photo} alt="img" className="object-cover" /></div>
                                         <div className="flex flex-col">
                                             <p>Welcome!</p>
