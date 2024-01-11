@@ -124,25 +124,20 @@ const Shop = () => {
       {/* popular restaurant */}
       <div className="p-5 text-black">
           <p className="text-xl md:text-3xl tracking-wider font-extralight p-5">Popular Restaurant:</p>
-          <div className="flex gap-5">
+          <div className="flex gap-3 md:gap-5 overflow-scroll">
             <div>
               <div className="md:w-[150px] md:h-[150px] w-[100px] h-[100px] rounded-full overflow-hidden">
                 <img className="w-full h-full object-cover hover:scale-110 duration-200 ease-in-out" src={googleMapPic} alt="logo" />
               </div>
               <p className="text-center">Phnom Penh</p>
             </div>
-
-            {allUsers?.filter(({ brand }) => brand !== 'Tos Nham').map(({ brand, product }, index) => (
-              <div key={index}>
-                {product.products.length > 0 && (
-                  <>
-                    <div className="md:w-[150px] md:h-[150px] w-[100px] h-[100px]  rounded-full overflow-hidden">
-                      <img className="w-full h-full object-cover hover:scale-110 duration-200 ease-in-out" src={product.products[0].image} alt="logo" />
+            {allUsers?.filter(({ product }) => product.products.length > 0).map(({ brand, product }, index) => (
+                <div key={index}>
+                    <div className="md:w-[150px] md:h-[150px] w-[100px] h-[100px] rounded-full overflow-hidden">
+                        <img className="w-full h-full object-cover hover:scale-110 duration-200 ease-in-out" src={product.products[0].image} alt="logo" />
                     </div>
                     <p className="text-center">{brand}</p>
-                  </>
-                )}
-              </div>
+                </div>
             ))}
           </div>
       </div>

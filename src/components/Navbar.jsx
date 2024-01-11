@@ -208,11 +208,11 @@ const Navbar = () => {
                         }
                         
                         {click ? 
-                            <div onClick={() => setClick(!click)} className="flex gap-2 w-fit">
+                            <div onClick={() => setClick(!click)} className="flex gap-2 w-full justify-end">
                                 <p>Close</p>
                                 <AiOutlineClose size={25}/>
                             </div> 
-                            : <div onClick={() => setClick(!click)} className="w-fit">
+                            : <div onClick={() => setClick(!click)} className="w-full flex justify-end">
                                 <AiOutlineMenu size={25}/>
                             </div>
                         }
