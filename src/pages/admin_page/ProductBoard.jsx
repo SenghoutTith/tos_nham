@@ -37,7 +37,7 @@ const ProductBoard = () => {
         const res = await createProductApiCall({...formData}).unwrap()
         refetch()
         setOpenCreate(false)
-        setFormData(initialState || {})
+        setFormData({})
         toast.success("Product added successfully")
       } catch (error) {
         toast.error(error?.data?.error || error.message)  
