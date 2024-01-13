@@ -9,7 +9,7 @@ import { shortenText } from '../../utils/utils';
 const Cart = () => {
 
   const { data, isLoading, error, refetch } = useGetProfileQuery({}, { refetchOnMountOrArgChange: true, refetchOnReconnect: true, refetchOnFocus: true });
-
+  
   const isLoggedIn = Boolean(data && !error);
 
   const [checkOut, setCheckOut] = useState(false)

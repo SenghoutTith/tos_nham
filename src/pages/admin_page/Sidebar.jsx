@@ -8,6 +8,8 @@ import { useGetAllPaymentsQuery, useGetAllUsersQuery, useGetProfileQuery, useLog
 import { toast } from 'react-toastify';
 import Loader from '../../components/Loader';
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from "react-redux";
+import { logout } from "../../redux/features/UserSlice";
 
 const Sidebar = ( {onNavItemClick } ) => {
 
@@ -15,9 +17,12 @@ const Sidebar = ( {onNavItemClick } ) => {
 
     const navigate = useNavigate()
 
+    const dispatch = useDispatch()
+
     const logoutHandler = async () => {
       try {
           await logoutApiCall().unwrap()
+          dispatch(logout())
           toast.success('Logout Successfull')
           navigate("/")
       } catch (error) {

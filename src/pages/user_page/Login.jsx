@@ -4,11 +4,15 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useLoginMutation } from '../../redux/features/userApiSlice'
 import { toast } from 'react-toastify'
 import Loader from '../../components/Loader'
+import { useDispatch } from 'react-redux'
+import { setCredentials } from '../../redux/features/UserSlice'
 
 const Login = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
+  const dispatch = useDispatch()
 
   const navigate = useNavigate()
 
@@ -19,6 +23,7 @@ const Login = () => {
     try {
       e.preventDefault();
       const res = await loginApiCall({email, password}).unwrap()
+      dispatch(setCredentials(res))
       toast.success(res.message || 'Login Successfull')
       navigate('/')
     } catch (error) {

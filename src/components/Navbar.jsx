@@ -15,11 +15,15 @@ import Loader from "./Loader";
 import { useGetProfileQuery, useLogoutMutation } from "../redux/features/userApiSlice";
 import { toast } from "react-toastify";
 import { shortenText } from "../utils/utils";
+import { useDispatch } from "react-redux";
+import { logout } from "../redux/features/UserSlice";
 
 const Navbar = () => {
 
     const [click, setClick] = useState(false)
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+    const dispatch = useDispatch()
 
     const [ logoutApiCall, {isLoading} ] = useLogoutMutation()
 
@@ -30,6 +34,7 @@ const Navbar = () => {
     const logoutHandler = async () => {
         try {
             await logoutApiCall().unwrap()
+            dispatch(logout())
             setUserProfile(null)
             toast.success('Logout Successfull')
         } catch (error) {
