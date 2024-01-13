@@ -18,6 +18,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
             query: (data) => ({
                 url: `${user_url}/login`,
                 method: "POST",
+                credentials: 'include',
                 body: data
             }),
             invalidatesTags: ['User']
@@ -26,6 +27,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
             query: () => ({
                 url: `${user_url}/logout`,
                 method: "GET",
+                credentials: 'include'
             })
         }),
         register: builder.mutation({
