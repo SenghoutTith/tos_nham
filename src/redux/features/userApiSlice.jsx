@@ -15,12 +15,15 @@ export const userApiSlice = apiSlice.injectEndpoints({
             }),
         }),
         login: builder.mutation({
-            query: (data) => ({
-                url: `${user_url}/login`,
-                method: "POST",
-                credentials: 'include',
-                body: data
-            }),
+            query: (data) => {
+                console.log('Sending login request with data:', data);
+                return {
+                    url: `${user_url}/login`,
+                    method: "POST",
+                    credentials: 'include',
+                    body: data
+                };
+            },
             invalidatesTags: ['User']
         }),
         logout: builder.mutation({
