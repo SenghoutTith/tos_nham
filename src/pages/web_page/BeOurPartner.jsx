@@ -1,7 +1,6 @@
 import { AiOutlineArrowDown } from "react-icons/ai"; 
 import { FiArrowRightCircle } from "react-icons/fi"; 
 import React, { useRef, useState } from 'react'
-import banner from "../../assets/pic3.avif"
 import Footer from "../../components/Footer"
 import { Link } from "react-scroll";
 import emailjs from '@emailjs/browser';
@@ -9,6 +8,8 @@ import Loader from "../../components/Loader";
 import { toast } from "react-toastify";
 
 const BeOurPartner = () => {
+
+  const banner = "https://i.ibb.co/b7m9p89/pic3.jpg"
 
   const form = useRef();
 

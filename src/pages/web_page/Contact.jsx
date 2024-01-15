@@ -2,7 +2,6 @@ import { BsFillClockFill } from "react-icons/bs";
 import { MdEmail } from "react-icons/md"; 
 import { AiFillPhone } from "react-icons/ai"; 
 import { FaMapMarkerAlt } from "react-icons/fa"; 
-import banner from "../../assets/banner.png"
 import facebook from "../../assets/facebook.png"
 import instagram from "../../assets/instagram.png"
 import tiktok from "../../assets/tik-tok.png"
@@ -18,6 +17,8 @@ import Footer from "../../components/Footer";
 import Loader from "../../components/Loader";
 
 const Contact = () => {
+
+  const banner = "https://i.ibb.co/R2P5QZg/pic2.jpg"
 
   const bannerBtn = [
     {
