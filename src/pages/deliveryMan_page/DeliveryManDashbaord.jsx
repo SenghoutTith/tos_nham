@@ -81,9 +81,9 @@ const DeliveryManDashbaord = () => {
                     />
                 </div>
                 {/* order notification*/}
-                <div className='grid grid-cols-2 w-full h-full gap-2'>
+                <div className='grid grid-cols-1 w-full h-full gap-2 place-items-center'>
                     {data?.delivery.slice(1).reverse().map(({data}, index) => (
-                        <div key={index} className='w-full h-full relative'>
+                        <div key={index} className='w-1/2 h-full relative'>
                             <div className={`p-5 bg-white shadow-lg ${data.status === 'success' ? 'opacity-60' : 'opacity-100'}`}>
                                 <p className='font-bold text-gray-600'>Company: <span className='text-gray-400/90 font-light'>{data.brand}</span></p>
                                 <p className='font-bold text-gray-600'>Order ID: <span className='text-gray-400/90 font-light'>#{data?._id}</span> </p>
@@ -105,7 +105,7 @@ const DeliveryManDashbaord = () => {
                                             <p>- <span className='text-black'>x{amount}</span> {name} <span className='text-red-500'>({total}$)</span></p>
                                         </div>
                                     ))}
-                                <p className='font-bold text-gray-600'>Order Total: <span>${data.totalPrice}</span></p>
+                                <p className='font-bold text-gray-600'>Order Total: <span>${parseFloat(data.totalPrice).toFixed(2)}</span></p>
                                 <div className={`w-full h-full flex gap-5`}>
                                     <button onClick={() => setAccept(true)} className={`${accept || data.status === 'success' ? 'w-full' : 'w-1/2'} duration-300 ease-in p-2 bg-green-500 hover:bg-green-500/50 ${accept && 'bg-green-600/70 hover:bg-green-600/70'} text-shadow text-white`} type='button' disabled={accept}><p className={`${accept && 'animate-pulse font-bold'}`}>Accept</p></button>
                                     <button className={`${accept || data.status === 'success' ? 'hidden cursor-not-allowed' : 'w-1/2'} duration-300 ease-out  p-2 bg-red-500 hover:bg-red-500/50 text-shadow text-white`} disabled={accept} type='button'>Reject</button>
