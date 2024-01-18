@@ -2,14 +2,12 @@ import { MdDeliveryDining } from "react-icons/md";
 import { AiOutlineSearch } from "react-icons/ai"; 
 import { AiOutlineDoubleLeft, AiOutlineDoubleRight } from "react-icons/ai"; 
 import React, { useEffect, useState } from "react";
-import Loader from "../../components/Loader";
 import { useGetProductQuery } from "../../redux/features/productApiSlice";
 import { useAddToCartMutation, useGetAllUsersQuery } from "../../redux/features/userApiSlice";
 import { productSlider, categories } from "../../data/data";
 import { Link } from "react-router-dom";
 import { shortenText } from "../../utils/utils";
 import { toast } from "react-toastify";
-import "react-multi-carousel/lib/styles.css";
 import { Link as ScrollLink } from "react-scroll";
 import Card from "../../components/Card";
 import Footer from "../../components/Footer";
@@ -18,9 +16,9 @@ const googleMapPic = "https://img.freepik.com/free-vector/location_53876-25530.j
 
 const Shop = () => {
 
-  const { isLoading, isError, isSuccess, data, error}  = useGetProductQuery("")
+  const { data}  = useGetProductQuery("")
 
-  const { isLoading: isLoadingUsers, data: allUsers} = useGetAllUsersQuery({}, { refetchOnMountOrArgChange: true})
+  const { data: allUsers} = useGetAllUsersQuery({}, { refetchOnMountOrArgChange: true})
 
   const [currentSlide, setCurrentSlide] = useState(0)
 
@@ -65,9 +63,7 @@ const Shop = () => {
 
   return (
     <>
-      {isLoading && <Loader /> }
       <div className='w-full max-h-full bg-gradient-to-b '>
-
         {/* banner section */}
         <div className='flex w-full h-[200px] md:h-[400px] my-20 relative bg-gradient-to-r from-purple-900 to-violet-400 p-5 ' >
           {productSlider.map(({title, imgSrc, id}) => (
@@ -146,13 +142,14 @@ const Shop = () => {
           <p className="text-3xl tracking-wider font-bold p-5 text-center">Explore Food</p>
       </div>
 
+
+      {/* catergory of foods */}
       <Card category="pizza" />
       <Card category="drink" />
       <Card category="noodle" />
       <Card category="hamburger" />
 
       {/* all foods */}
-
       <div className="p-5 text-black">
             <div name="all" className="py-10"></div>
             <p className="text-3xl tracking-wider font-extralight p-5">All Foods:</p>
